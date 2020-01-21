@@ -1,11 +1,11 @@
 name: Release Game New Version
 
 on:
-  create:
+  release:
     branches:
       - master
-    tag:
-      - '*'
+    types:
+      - created
 
 jobs:
   Build:
