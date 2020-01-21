@@ -1,0 +1,56 @@
+name: Release Game New Version
+
+on:
+  create:
+    branches:
+      - master
+    tag:
+      - '*'
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    name: Build
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@master
+        
+      - uses: actions/setup-dotnet@v1
+      - run: dotnet publish -c Release
+
+      - name: Upload SRC
+        uses: actions/upload-artifact@v1
+        with:
+          name: Cli
+          path: Cli
+      
+  Release:
+    needs: Build
+    runs-on: ubuntu-latest
+    name: Release Docker Package
+    steps:
+
+      - name: Download SRC
+        uses: actions/download-artifact@v1
+        with:
+          name: Cli
+
+      - name: Create Variable with the tag version
+        env:
+          GITHUB_REF: ${{ github.ref }}
+        run: echo "::set-env name=TAG_NAME::$(echo $GITHUB_REF | cut -d / -f 3)"
+
+      - name: CP content into current folder
+        run: cp -r ./Cli/* .
+      
+      - name: Show files
+        run: ls -lisa
+
+      - name: Publish to Registry
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: gh-davidc/simplegame/game:${{ env.TAG_NAME }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          registry: docker.pkg.github.com
