@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleGame", "SimpleGame\SimpleGame.csproj", "{58178C43-9ADA-40A4-B84F-15AA0CC148B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cli", "Cli\Cli.csproj", "{BD190B10-A422-4B01-B9DA-B763DD2476A2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{58178C43-9ADA-40A4-B84F-15AA0CC148B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58178C43-9ADA-40A4-B84F-15AA0CC148B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58178C43-9ADA-40A4-B84F-15AA0CC148B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58178C43-9ADA-40A4-B84F-15AA0CC148B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD190B10-A422-4B01-B9DA-B763DD2476A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD190B10-A422-4B01-B9DA-B763DD2476A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD190B10-A422-4B01-B9DA-B763DD2476A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD190B10-A422-4B01-B9DA-B763DD2476A2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
