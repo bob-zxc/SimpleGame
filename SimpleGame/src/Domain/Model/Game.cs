@@ -17,12 +17,12 @@ namespace SimpleGame.Domain.Model
 
         public void LevelUp()
         {
-            throw new System.NotImplementedException();
+            House.LevelUp();
         }
 
         public void Paint(string color)
         {
-            throw new System.NotImplementedException();
+            House.Paint(color);
         }
     }
 }

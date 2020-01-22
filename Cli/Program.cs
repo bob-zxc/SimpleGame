@@ -20,8 +20,8 @@ namespace Cli
                 Console.BackgroundColor = ConsoleColor.White;
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine($"Your house now:");
-                Console.WriteLine($" - Level: {house.Level}");
-                Console.WriteLine($" - Color: {house.Color}");
+                Console.WriteLine($" - Level: {game.House.Level}");
+                Console.WriteLine($" - Color: {game.House.Color}");
                 Console.ResetColor();
                 Console.WriteLine("");
                 Console.WriteLine("What do you want to do?");
@@ -49,11 +49,11 @@ namespace Cli
                             Console.ResetColor();
                             break;
                         }
-                        house.Paint(splittedString[1]);
+                        game.House.Paint(splittedString[1]);
                         break;
                     case "level-up":
                     case "2":
-                        house.LevelUp();
+                        game.House.LevelUp();
                         break;
                     default:
                         Console.ForegroundColor = ConsoleColor.Red;
