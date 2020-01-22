@@ -54,3 +54,23 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           registry: docker.pkg.github.com
+          
+  Notify:
+    needs: Release
+    name: Slack Notification
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Create Variable with the tag version
+        env:
+          GITHUB_REF: ${{ github.ref }}
+        run: echo "::set-env name=TAG_NAME::$(echo $GITHUB_REF | cut -d / -f 3)"
+      
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@master
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_CHANNEL: techtalks-docker-registry
+          SLACK_USERNAME: DockerImageCreator
+          SLACK_MESSAGE: Docker image tag was created gh-davidc/simplegame/game:${{ env.TAG_NAME }}
